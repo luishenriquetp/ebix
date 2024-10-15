@@ -1,0 +1,7 @@
+{
+  "name": "creativephotos",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

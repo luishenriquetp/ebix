@@ -1,0 +1,61 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="ion-text-center"> <img src="assets/icon/button2.png" width="50" height="auto"/></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title class="ion-text-center" size="large"> <img src="assets/icon/button2.png" width="50" height="auto"/></ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <!-- Camera video feed with filter -->
+    <div class="camera-container" style="position: relative;">
+      <video #cameraVideo autoplay></video>
+      <img *ngIf="selectedFilter !== 'none'" [src]="filterImageSrc" class="filter-overlay" />
+    </div>
+
+    <!-- Filter selection buttons -->
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4">
+          <ion-button shape="round" fill="outline" expand="full" (click)="applyFilter('filter1')"> 
+            <img src="assets/icon/button1.png" width="30" height="auto"/>
+          </ion-button>
+        </ion-col>
+        <ion-col size="4">
+          <ion-button shape="round" fill="outline" expand="full" (click)="applyFilter('filter2')"> 
+            <img src="assets/icon/button2.png" width="25" height="auto"/>
+          </ion-button>
+        </ion-col>
+        <ion-col size="4">
+          <ion-button shape="round" fill="outline" expand="full" (click)="applyFilter('filter3')"> 
+            <img src="assets/icon/button3.png" width="35" height="auto"/>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <!-- Button to capture the photo -->
+    <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button  expand="block" (click)="capturePhoto()">
+      <ion-icon name="camera"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+
+
+    <!-- Collection of photos taken -->
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6" *ngFor="let photo of capturedPhotos">
+          <ion-img [src]="photo"></ion-img>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
